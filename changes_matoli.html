@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matoli - Sacred Fruits of Ganesh Chaturthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(135deg, #ff6b35, #f7931e, #ffa726);
+      color: #3e2723;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .matoli-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-title {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+    }
+    .main-greeting {
+      font-size: 3em;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+      animation: titleGlow 4s ease-in-out infinite;
+    }
+    @keyframes titleGlow {
+      0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+      50% { text-shadow: 2px 2px 20px rgba(255,193,7,0.8); }
+    }
+    .wooden-frame {
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 900px;
+      height: 200px;
+      background: linear-gradient(45deg, #8d6e63, #6d4c41);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+    .wooden-frame::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background: linear-gradient(45deg, #5d4037, #4e342e);
+      border-radius: 10px;
+    }
+    .hanging-fruits {
+      position: absolute;
+      top: 240px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 850px;
+      height: 350px;
+      z-index: 2;
+    }
+    .fruit-item {
+      position: absolute;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-align: center;
+      padding: 10px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.2);
+      width: 80px;
+      height: 100px;
+    }
+    .fruit-item:hover {
+      transform: scale(1.2) translateY(-10px);
+      background: rgba(255,255,255,0.3);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .fruit-emoji {
+      font-size: 2.5em;
+      display: block;
+      margin-bottom: 5px;
+      animation: swing 3s ease-in-out infinite;
+    }
+    .fruit-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      line-height: 1.2;
+    }
+    /* Arranged fruits in two rows without overlapping */
+    .coconut { top: 20px; left: 5%; animation-delay: 0s; }
+    .banana { top: 20px; left: 20%; animation-delay: 0.5s; }
+    .mango { top: 20px; left: 35%; animation-delay: 1s; }
+    .jackfruit { top: 20px; left: 50%; animation-delay: 1.5s; }
+    .orange { top: 20px; left: 65%; animation-delay: 2s; }
+    .pineapple { top: 20px; left: 80%; animation-delay: 2.5s; }
+    .sugarcane { top: 160px; left: 20%; animation-delay: 3s; }
+    .betel-leaves { top: 160px; left: 60%; animation-delay: 3.5s; }
+    @keyframes swing {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+    .ganesha-section {
+      position: relative;
+      margin-top: 520px;
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+    }
+    .ganesha-icon {
+      font-size: 6em;
+      margin-bottom: 20px;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      0% { 
+        filter: drop-shadow(0 0 10px rgba(255,193,7,0.5));
+        transform: scale(1);
+      }
+      100% { 
+        filter: drop-shadow(0 0 30px rgba(255,193,7,0.9));
+        transform: scale(1.05);
+      }
+    }
+    .main-title {
+      font-size: 3em;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+      animation: titleGlow 4s ease-in-out infinite;
+    }
+    .subtitle {
+      font-size: 1.5em;
+      color: #fff3cd;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+    .description {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      background: rgba(0,0,0,0.2);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+    .decorative-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .diya {
+      position: absolute;
+      font-size: 2em;
+      animation: flicker 2s ease-in-out infinite;
+    }
+    .diya1 { top: 20%; left: 5%; animation-delay: 0s; }
+    .diya2 { top: 20%; right: 5%; animation-delay: 1s; }
+    .diya3 { bottom: 20%; left: 10%; animation-delay: 2s; }
+    .diya4 { bottom: 20%; right: 10%; animation-delay: 3s; }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; filter: brightness(1); }
+      50% { opacity: 0.8; filter: brightness(1.2); }
+    }
+    .marigold {
+      position: absolute;
+      font-size: 1.5em;
+      animation: petals 4s ease-in-out infinite;
+    }
+    .marigold1 { top: 30%; left: 15%; animation-delay: 0s; }
+    .marigold2 { top: 30%; right: 15%; animation-delay: 1s; }
+    .marigold3 { bottom: 30%; left: 20%; animation-delay: 2s; }
+    .marigold4 { bottom: 30%; right: 20%; animation-delay: 3s; }
+    @keyframes petals {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.1); }
+    }
+    .rope {
+      position: absolute;
+      width: 2px;
+      background: #8d6e63;
+      z-index: 1;
+    }
+    .rope1 { top: 300px; left: 12%; height: 80px; }
+    .rope2 { top: 300px; left: 27%; height: 80px; }
+    .rope3 { top: 300px; left: 42%; height: 80px; }
+    .rope4 { top: 300px; left: 57%; height: 80px; }
+    .rope5 { top: 300px; left: 72%; height: 80px; }
+    .rope6 { top: 300px; left: 87%; height: 80px; }
+    .rope7 { top: 300px; left: 27%; height: 220px; }
+    .rope8 { top: 300px; left: 67%; height: 220px; }
+
+    /* Modal styles for backstories */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+    }
+    .modal-content {
+      background: linear-gradient(135deg, #fff, #f8f9fa);
+      margin: 5% auto;
+      padding: 30px;
+      border: none;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalFadeIn 0.5s ease;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .close {
+      color: #ff6b35;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .close:hover,
+    .close:focus {
+      color: #f7931e;
+      text-decoration: none;
+    }
+    .modal-title {
+      color: #ff6b35;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .modal-emoji {
+      font-size: 4em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .modal-text {
+      color: #333;
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+    .modal-text h3 {
+      color: #ff6b35;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .main-greeting { font-size: 2em; }
+      .main-title { font-size: 2em; }
+      .subtitle { font-size: 1.2em; }
+      .description { font-size: 1em; padding: 20px; }
+      .fruit-emoji { font-size: 2em; }
+      .fruit-name { font-size: 10px; }
+      .ganesha-icon { font-size: 4em; }
+      .fruit-item { width: 70px; height: 90px; }
+      .hanging-fruits { height: 300px; }
+      .ganesha-section { margin-top: 470px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="matoli-container">
+    <div class="top-title">
+      <h1 class="main-greeting"> 
+        <img src="download-removebg-preview.png" style="width:40px; vertical-align:middle; animation: glow 3s ease-in-out infinite alternate;">
+      Happy Ganesh Chaturthi
+      <img src="download-removebg-preview.png" style="width:40px; vertical-align:middle; animation: glow 3s ease-in-out infinite alternate;">
+    </h1>
+    </div>
+
+    <div class="decorative-elements">
+      <div class="diya diya1">🪔</div>
+      <div class="diya diya2">🪔</div>
+      <div class="diya diya3">🪔</div>
+      <div class="diya diya4">🪔</div>
+      <div class="marigold marigold1">🪔</div>
+      <div class="marigold marigold2">🪔</div>
+      <div class="marigold marigold3">🪔</div>
+      <div class="marigold marigold4">🪔</div>
+    </div>
+
+    <div class="wooden-frame"></div>
+    
+    <div class="rope rope1"></div>
+    <div class="rope rope2"></div>
+    <div class="rope rope3"></div>
+    <div class="rope rope4"></div>
+    <div class="rope rope5"></div>
+    <div class="rope rope6"></div>
+    <div class="rope rope7"></div>
+    <div class="rope rope8"></div>
+
+    <div class="hanging-fruits">
+      <div class="fruit-item coconut" onclick="openStory('coconut')">
+        <div class="fruit-emoji">🥥</div>
+        <div class="fruit-name">Coconut<br>नारळ</div>
+      </div>
+      
+      <div class="fruit-item banana" onclick="openStory('banana')">
+        <div class="fruit-emoji">🍌</div>
+        <div class="fruit-name">Banana<br>केळी</div>
+      </div>
+      
+      <div class="fruit-item mango" onclick="openStory('mango')">
+        <div class="fruit-emoji">🥭</div>
+        <div class="fruit-name">Mango<br>आंबा</div>
+      </div>
+      
+      <div class="fruit-item jackfruit" onclick="openStory('jackfruit')">
+        <div class="fruit-emoji">🍈</div>
+        <div class="fruit-name">Jackfruit<br>फणस</div>
+      </div>
+      
+      <div class="fruit-item orange" onclick="openStory('orange')">
+        <div class="fruit-emoji">🍊</div>
+        <div class="fruit-name">Orange<br>संत्रे</div>
+      </div>
+      
+      <div class="fruit-item pineapple" onclick="openStory('pineapple')">
+        <div class="fruit-emoji">🍍</div>
+        <div class="fruit-name">Pineapple<br>अननस</div>
+      </div>
+      
+      <div class="fruit-item sugarcane" onclick="openStory('sugarcane')">
+        <div class="fruit-emoji">🎋</div>
+        <div class="fruit-name">Sugarcane<br>ऊस</div>
+      </div>
+      
+      <div class="fruit-item betel-leaves" onclick="openStory('betel')">
+        <div class="fruit-emoji">🍃</div>
+        <div class="fruit-name">Betel Leaves<br>पान</div>
+      </div>
+    </div>
+
+    <div class="ganesha-section">
+     <div class="ganesha-icon">
+  <img src="download-removebg-preview.png" style="width:100px; height:auto; animation: glow 3s ease-in-out infinite alternate;">
+</div>
+      <h1 class="main-title">Matoli</h1>
+      <h2 class="subtitle">Sacred Fruits of Ganesh Chaturthi</h2>
+      
+      <div class="description">
+        <p><strong>Matoli</strong> is a traditional decoration hung during Ganesh Chaturthi, featuring sacred fruits, leaves, and flowers suspended from a wooden frame. Each fruit carries deep spiritual significance, representing prosperity, purity, and devotion to Lord Ganesha.</p>
+        
+        <p>This ancient tradition symbolizes the abundance of nature and the blessings of the harvest season. The hanging fruits create a beautiful canopy above the Ganesha idol, representing the divine connection between earth's bounty and spiritual devotion.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for backstories -->
+  <div id="storyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalEmoji" class="modal-emoji"></div>
+      <h2 id="modalTitle" class="modal-title"></h2>
+      <div id="modalText" class="modal-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const stories = {
+      coconut: {
+        emoji: '🥥',
+        title: 'Coconut - The Divine Fruit',
+        story: `<h3>Sacred Significance</h3>
+        <p>The coconut holds profound spiritual meaning in Hindu tradition. Its three eyes represent the three-eyed Lord Shiva, while its hard shell symbolizes the ego that must be broken to reach the pure soul within.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha loves coconut offerings because they represent the offering of one's ego to the divine. The sweet water inside symbolizes the nectar of devotion, while the white kernel represents purity of heart.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>In the Matoli, coconuts are hung with great reverence. They are often the first fruits to be offered to Lord Ganesha, symbolizing the devotee's surrender of their ego and pride to the elephant-headed deity.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>The coconut teaches us that true wisdom comes from breaking through our outer shell of ignorance to discover the pure consciousness within. Just as we must crack the coconut to enjoy its sweetness, we must break our ego to experience divine bliss.</p>`
+      },
+      banana: {
+        emoji: '🍌',
+        title: 'Banana - Symbol of Prosperity',
+        story: `<h3>Sacred Significance</h3>
+        <p>The banana represents fertility, prosperity, and the fulfillment of desires. Its golden color symbolizes wealth and abundance, while its sweet taste represents the sweetness of life blessed by the divine.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha, the remover of obstacles, is offered bananas to seek his blessings for prosperity in all endeavors. The fruit's natural sweetness is believed to please the deity and bring good fortune to devotees.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>Bananas in the Matoli represent the wish for a prosperous year ahead. They are traditionally hung in bunches, symbolizing abundance and the hope that the family will never face scarcity.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>The banana teaches us about unity in diversity - though each fruit is separate, they grow together in harmony. This reminds us that while we are individuals, we prosper best when we support each other as a community.</p>`
+      },
+      mango: {
+        emoji: '🥭',
+        title: 'Mango - The King of Fruits',
+        story: `<h3>Sacred Significance</h3>
+        <p>Known as the "King of Fruits," the mango symbolizes love, fertility, and the sweetness of divine grace. Its golden color represents the sun's energy and the divine light that illuminates our path.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha is particularly fond of mangoes, and offering them is believed to bring blessings of knowledge and wisdom. The fruit's association with Saraswati, the goddess of learning, makes it especially auspicious for students and scholars.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>Mangoes in the Matoli represent the peak of divine blessings. They are often placed at the center of the arrangement, symbolizing the central place of divine love in our lives.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>The mango tree gives shade, fruit, and beauty without expecting anything in return. It teaches us the virtue of selfless service and reminds us that true fulfillment comes from giving to others.</p>`
+      },
+      jackfruit: {
+        emoji: '🍈',
+        title: 'Jackfruit - Symbol of Abundance',
+        story: `<h3>Sacred Significance</h3>
+        <p>The jackfruit, being one of the largest fruits in the world, represents abundance, strength, and the vastness of divine blessings. Its numerous seeds symbolize the countless opportunities that life offers to those who seek them.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha appreciates the jackfruit's size and abundance, seeing it as a symbol of the vast universe he governs. Offering jackfruit is believed to bring strength to overcome life's challenges and abundance in all endeavors.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>The jackfruit's presence in the Matoli signifies the family's prayer for abundant harvests and prosperity. Its large size represents the magnitude of blessings they hope to receive from Lord Ganesha.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>Despite its imposing size, the jackfruit is gentle and sweet inside. It teaches us that true strength lies not in appearance but in the sweetness of our character and the abundance of our compassion.</p>`
+      },
+      orange: {
+        emoji: '🍊',
+        title: 'Orange - Fruit of Good Fortune',
+        story: `<h3>Sacred Significance</h3>
+        <p>The orange represents good fortune, positive energy, and the warmth of divine love. Its vibrant color symbolizes the fire of devotion and the bright light of wisdom that dispels darkness.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha's love for oranges is legendary. The fruit's round shape represents completeness and perfection, while its segments symbolize the various aspects of life that Ganesha harmonizes for his devotees.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>Oranges in the Matoli bring the energy of joy and celebration. They are believed to attract positive vibrations and dispel negativity from the home, creating an atmosphere of happiness and prosperity.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>The orange's segments, though separate, are united by one skin. This teaches us that while we may have different roles and responsibilities, we are all connected by the divine thread of love and compassion.</p>`
+      },
+      pineapple: {
+        emoji: '🍍',
+        title: 'Pineapple - Crown of Hospitality',
+        story: `<h3>Sacred Significance</h3>
+        <p>The pineapple, with its crown-like top, represents dignity, hospitality, and warm welcome. Its sweet and tangy taste symbolizes the balance between pleasure and strength that divine blessings bring to our lives.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha, the welcomer of all devotees, appreciates the pineapple's symbolism of hospitality. Offering pineapple is believed to make one's home a place of warmth and welcome for all who enter.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>The pineapple in the Matoli represents the family's commitment to hospitality and their prayer for a home filled with joy and warmth. Its crown symbolizes the royal treatment they wish to give to all guests.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>The pineapple takes time to ripen and develop its sweetness. It teaches us patience and reminds us that the sweetest rewards in life come to those who wait with faith and continue to grow spiritually.</p>`
+      },
+      sugarcane: {
+        emoji: '🎋',
+        title: 'Sugarcane - The Sweet Life',
+        story: `<h3>Sacred Significance</h3>
+        <p>Sugarcane represents the sweetness of life, the rewards of hard work, and the divine nectar of spiritual practice. Its straight growth symbolizes righteousness and the path of dharma.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha is offered sugarcane to seek his blessings for a sweet and prosperous life. The juice extracted from sugarcane represents the essence of spiritual practice - the sweet reward of devotion.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>Sugarcane in the Matoli represents the family's wish for sweetness in all relationships and endeavors. Its inclusion ensures that the coming year will be filled with joy, happiness, and harmonious relationships.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>Sugarcane must be crushed to release its sweetness. Similarly, it teaches us that sometimes we must go through challenges to extract the sweet wisdom and strength that lies within us.</p>`
+      },
+      betel: {
+        emoji: '🍃',
+        title: 'Betel Leaves - Sacred Offering',
+        story: `<h3>Sacred Significance</h3>
+        <p>Betel leaves are considered among the most sacred offerings in Hindu tradition. They represent freshness, purity, and the breath of life. Their heart shape symbolizes devotion and love for the divine.</p>
+        
+        <h3>Ganesha Connection</h3>
+        <p>Lord Ganesha is always offered betel leaves as they are considered essential for any puja or worship. The leaves represent the devotee's pure heart and sincere devotion, which pleases the deity immensely.</p>
+        
+        <h3>Matoli Tradition</h3>
+        <p>Betel leaves in the Matoli ensure that the worship is complete and authentic. They are often placed at strategic positions to purify the entire arrangement and create a sacred atmosphere.</p>
+        
+        <h3>Spiritual Lesson</h3>
+        <p>The betel leaf's fresh green color represents life and renewal. It teaches us to always keep our hearts fresh with devotion and our minds green with the continuous growth of wisdom and understanding.</p>`
+      }
+    };
+
+    function openStory(fruit) {
+      const modal = document.getElementById('storyModal');
+      const modalEmoji = document.getElementById('modalEmoji');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalText = document.getElementById('modalText');
+      
+      const story = stories[fruit];
+      
+      modalEmoji.textContent = story.emoji;
+      modalTitle.textContent = story.title;
+      modalText.innerHTML = story.story;
+      
+      modal.style.display = 'block';
+      
+      // Add animation effect to clicked fruit
+      const clickedElement = event.target.closest('.fruit-item');
+      clickedElement.style.transform = 'scale(1.3) rotateY(360deg)';
+      clickedElement.style.transition = 'all 0.8s ease';
+      
+      setTimeout(() => {
+        clickedElement.style.transform = '';
+      }, 800);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('storyModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('storyModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Add subtle floating animation to fruits
+    document.querySelectorAll('.fruit-item').forEach((fruit, index) => {
+      fruit.style.animationDelay = `${index * 0.2}s`;
+    });
+  </script>
+</body>
+</html>
